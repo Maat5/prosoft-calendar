@@ -21,6 +21,14 @@ angular.module('app', [
       abstract: true,
       templateUrl: "./templates/base/base.html",
     })
+    .state('app.dashboard', {
+      url: '/',
+      templateUrl: './templates/dashboard/dashboard.html'
+    })
+    .state('404', {
+      url: '/404',
+      templateUrl: './templates/shared/404.html'
+    });
 
   $locationProvider.html5Mode({
     enabled: true,
