@@ -1,0 +1,26 @@
+{
+  "name": "prosoft-calendar",
+  "description": "Prosoft frontend test",
+  "main": "app.js",
+  "author": "Manuel Abrante",
+  "license": "ISC",
+  "homepage": "https://github.com/Maat5/prosoft-calendar",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.4",
+    "angular-ui-router": "1.0.4",
+    "angular-bootstrap": "2.5.0",
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.18.1",
+    "lodash": "^4.17.4"
+  }
+}
