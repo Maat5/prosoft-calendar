@@ -1,5 +1,5 @@
 angular.module('app.dashboard', [])
-  .controller('DashboardCtrl', ['$scope','moment', 'lodash', function($scope, moment, lodash ) {
+  .controller('DashboardCtrl', ['$scope','moment', 'lodash','ApiRequests', function($scope, moment, lodash, ApiRequests ) {
 
     $scope.daysName = [{
       number: 0,
@@ -28,11 +28,11 @@ angular.module('app.dashboard', [])
     $scope.calendars = [];
     //triggered at form submit
     $scope.searchDays = function(data) {
-      handleDates(data.date, data.count);
+      handleDates(data.date, data.count, data.code);
     };
 
     // populate calendars
-    function handleDates(date, count) {
+    function handleDates(date, count, code) {
       $scope.calendars = [];
       var _date = moment(date);
       var end =
@@ -46,6 +46,26 @@ angular.module('app.dashboard', [])
         end = moment(start).endOf('month');
       }
 
+      if(code) {
+        // async process
+        ApiRequests.getHolydays(code, _date.format('Y'))
+          .then(function(data) {
+            console.log('data', data);
+            calendarBuild(start, end);
+          })
+          .catch(function(err){
+            console.log('request error', err);
+            calendarBuild(start, end);
+          })
+      }
+      else{
+        // sync process
+        calendarBuild(start, end);
+      }
+
+    }
+
+    function calendarBuild(start, end){
       var dates = getMonths(start, end);
       // handle multiple month
       _.forEach(dates, function(month, i) {
