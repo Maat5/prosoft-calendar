@@ -1,0 +1,23 @@
+{
+  "name": "prosoft-calendar",
+  "version": "1.0.0",
+  "description": "Prosoft frontend test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maat5/prosoft-calendar.git"
+  },
+  "keywords": [
+    "Calendar",
+    "Angular"
+  ],
+  "author": "Manuel Abrante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maat5/prosoft-calendar/issues"
+  },
+  "homepage": "https://github.com/Maat5/prosoft-calendar#readme"
+}
