@@ -33,6 +33,27 @@
     <!-- Calendar -->
     <div class="col-md-6 col-xs-12">
       <h3> Calendar</h3>
+      <div class="calendar">
+        <div class="calendar-container">
+          <div class="calendar-days-names">
+            <span class="day" ng-repeat="date in daysName track by $index">
+              {{date.name}}
+            </span>
+          </div>
+          <div class="calendar-month">
+            <p>August 2008</p>
+          </div>
+          <div class="calendar-days-grid">
+            <div class="calendar-days-grid-day" ng-repeat="weeks in daysGrid track by $index" >
+              <span class="day" ng-repeat="dayInfo in weeks track by $index">
+                {{ dayInfo.day }}
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

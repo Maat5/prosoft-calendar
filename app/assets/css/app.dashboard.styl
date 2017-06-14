@@ -11,3 +11,39 @@
 
 .m-t-md
   margin-top 20px
+
+.calendar
+  display flex
+  flex-flow column wrap
+  justify-content center
+  align-items center
+  .calendar-container
+    border 1px solid black
+  .calendar-days-names
+    display flex
+    flex-direction row
+    flex 1 1 auto
+    justify-content space-around
+   .calendar-month
+     background-color #EDF6D7
+     text-align center
+     padding 5px
+     p
+       margin 0 !important
+       padding 0 !important
+   .calendar-days-grid-day
+     display flex
+     flex-flow row wrap
+     flex 1 1 auto
+     .day
+       background-color #C5DF8B
+       border 1px solid #FFF
+
+   .day
+     width 40px
+     padding 5px
+     text-align center
+   .weekend
+      background-color yellow !important
+    .invalid
+      background-color gray !important
