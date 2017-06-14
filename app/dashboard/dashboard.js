@@ -25,8 +25,6 @@ angular.module('app.dashboard', [])
     }];
 
     $scope.daysForm = {};
-    $scope.daysGrid = [];
-    $scope.dateArray = [];
     $scope.calendars = [];
     //triggered at form submit
     $scope.searchDays = function(data) {
@@ -47,9 +45,32 @@ angular.module('app.dashboard', [])
       else {
         end = moment(start).endOf('month');
       }
-      var dates = getDates(start, end);
-      var weeks = makeWeeks(dates);;
-      console.log(weeks)
+
+      var dates = getMonths(start, end);
+      // handle multiple month
+      _.forEach(dates, function(month, i) {
+        var weeks = makeWeeks(month);
+        // populate calendars
+        $scope.calendars.push(fillBlankSpaces(weeks));
+      });
+    }
+
+    // create an array with months and all days of week in the month
+    function getMonths(startDate, stopDate) {
+      var months = [];
+      var currentDate = moment(startDate);
+      var stopDate = moment(stopDate);
+      var currentMonth = [];
+      while (stopDate > currentDate) {
+        var month = moment(currentDate).format('MM');
+        var start = moment(currentDate).startOf('month');
+        var end = moment(start).endOf('month');
+
+        months.push(getDates(start, end));
+        currentDate.add(1,'month');
+
+      }
+      return months;
     }
 
     // get days between to dates
@@ -97,6 +118,23 @@ angular.module('app.dashboard', [])
     function getDayNumber(day){
       var day = moment(day).format('d');
       return day;
+    }
+
+    // fill days without dates
+    function fillBlankSpaces(dates) {
+      _.forEach($scope.daysName, function(days, i){
+        _.forEach(dates, function(weeks){
+          var day = _.get(weeks, days.number );
+          if(_.isUndefined(day)){
+            day = {
+              day: '',
+              isWeekend: (days.number == 6  || days.number  == 0) ? true : false
+            };
+            weeks[days.number] = day;
+          }
+        });
+      });
+      return dates;
     }
 
   }]);
