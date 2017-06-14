@@ -26,6 +26,7 @@ gulp.task('stylus', function() {
     .pipe(rename({
       extname: '.min.css'
     }))
+    .pipe(minify())
     .pipe(gulp.dest(build.buildCss))
 });
 
@@ -45,7 +46,7 @@ gulp.task('libsStyle', function() {
 gulp.task('appScripts', function() {
   return gulp.src(build.src + '**/*.js')
     .pipe(concat('app.min.js'))
-    // .pipe(uglify({ mangle: false }))
+    .pipe(uglify({ mangle: false }))
     .pipe(gulp.dest(build.buildJs));
 });
 
