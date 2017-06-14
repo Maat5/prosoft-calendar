@@ -7,7 +7,8 @@
  */
 angular.module('app', [
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'app.dashboard'
 
 ]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -23,7 +24,8 @@ angular.module('app', [
     })
     .state('app.dashboard', {
       url: '/',
-      templateUrl: './templates/dashboard/dashboard.html'
+      templateUrl: './templates/dashboard/dashboard.html',
+      controller: "DashboardCtrl"
     })
     .state('404', {
       url: '/404',
