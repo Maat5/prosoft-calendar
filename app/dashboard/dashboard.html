@@ -42,10 +42,10 @@
             </span>
           </div>
           <div class="calendar-month">
-            <p>  {{'Agosto 2017'}}</p>
+            <p>  {{calendar.name}}</p>
           </div>
           <div class="calendar-days-grid">
-            <div class="calendar-days-grid-day" ng-repeat="weeks in calendar track by $index" >
+            <div class="calendar-days-grid-day" ng-repeat="weeks in calendar.dates track by $index" >
               <span class="day" ng-repeat="dateInfo in weeks track by $index" ng-class="{weekend: dateInfo.isWeekend, invalid: dateInfo.day === ''}">
                 {{ dateInfo.day }}
               </span>

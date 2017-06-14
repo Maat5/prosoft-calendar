@@ -49,9 +49,14 @@ angular.module('app.dashboard', [])
       var dates = getMonths(start, end);
       // handle multiple month
       _.forEach(dates, function(month, i) {
+        //  get month and generate weeks
         var weeks = makeWeeks(month);
+        // get month name
+        var selectechWeek = _.first(weeks);
+        var dt = _.find(selectechWeek, 'date');
+        var name = moment(dt.date).format('MMMM Y');
         // populate calendars
-        $scope.calendars.push(fillBlankSpaces(weeks));
+        $scope.calendars.push({name: name , dates: fillBlankSpaces(weeks)});
       });
     }
 
