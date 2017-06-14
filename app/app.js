@@ -8,6 +8,7 @@
 angular.module('app', [
   'ui.router',
   'ui.bootstrap',
+  'app.services',
   'app.dashboard'
 
 ]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
