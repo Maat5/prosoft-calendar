@@ -24,5 +24,6 @@ angular.module('app.dashboard', [])
       name: 'S'
     }];
 
+    $scope.daysForm = {};
 
   }]);
